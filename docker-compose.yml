@@ -1,0 +1,24 @@
+version: '3'
+services:
+    wikiapp:
+        build: .
+        ports:
+            - "3000:3000"
+        container_name: wiki_frontend
+        environment:
+           - WIKI_HOST=postgresjawnt
+           - WIKI_DB=wiki
+           - WIKI_USER=wikijs
+           - WIKI_PASSWORD=wikijsrocks
+    postgresjawnt:
+        image: postgres:latest
+        ports: 
+           - "5432:5432"        
+        container_name: postgresjawnt
+        environment:
+           - POSTGRES_HOST=postgresjawnt
+           - POSTGRES_DB=wiki
+           - POSTGRES_USER=wikijs
+           - POSTGRES_PASSWORD=wikijsrocks
+
+ 
